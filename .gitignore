@@ -1,0 +1,8 @@
+# Fichiers et dossiers à ignorer par Git
+
+# Fichiers cachés
+.cache
+.env
+
+# Environnement virtuel
+myenv/
