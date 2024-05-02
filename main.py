@@ -1,6 +1,6 @@
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
-from pytube import YouTube
+from pytube import YouTube, Search
 import random
 from dotenv import load_dotenv
 import os
@@ -57,6 +57,9 @@ class YouTubeDownloader:
         url = f"https://www.youtube.com/results?search_query={query}"
 
         print(url)
+
+        s = Search(track_name)
+        print(s)
 
         # Utiliser pytube pour télécharger la vidéo à partir de l'URL
         yt = YouTube(url)
