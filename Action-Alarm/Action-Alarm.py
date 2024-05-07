@@ -1,3 +1,10 @@
+from debug import Debug
+
+Debug.blocking = False
+Debug.emojisActive = False
+Debug.prefixActive = False
+Debug.verbose = False
+
 class ActionPermission:
     """
     Base class to define action permissions.
@@ -10,22 +17,22 @@ class RollerShutterProtocol(ActionPermission):
     Class defining the methods of a roller shutter protocol.
     """
     def up(self):
-        print("The up method must be implemented in the subclass.")
+        Debug.LogWarning("The up method must be implemented in the subclass.")
 
     def down(self):
-        print("The down method must be implemented in the subclass.")
+        Debug.LogWarning("The down method must be implemented in the subclass.")
 
     def stop(self):
-        print("The stop method must be implemented in the subclass.")
+        Debug.LogWarning("The stop method must be implemented in the subclass.")
 
     def open_for_x_sec(self, nb_sec):
-        print("The open_for_x_sec method must be implemented in the subclass.")
+        Debug.LogWarning("The open_for_x_sec method must be implemented in the subclass.")
 
     def close_for_x_sec(self, nb_sec):
-        print("The close_for_x_sec method must be implemented in the subclass.")
+        Debug.LogWarning("The close_for_x_sec method must be implemented in the subclass.")
 
     def open_at(self, nb_sec):
-        print("The open_at method must be implemented in the subclass.")
+        Debug.LogWarning("The open_at method must be implemented in the subclass.")
 
 
 if __name__ == "__main__":
