@@ -1,5 +1,4 @@
-# Classe Reveil simplifiée
-class Reveil:
+class Waker:
     def __init__(self):
         self.actions = []
 
@@ -10,3 +9,9 @@ class Reveil:
         for action, params in self.actions:
             action(*params)
 
+
+class Alarm:
+    def __init__(self):
+        pass
+    
+    
