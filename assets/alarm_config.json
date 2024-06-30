@@ -1,0 +1,28 @@
+{
+    "alarms": [
+      {
+        "day": "Monday",
+        "time": "07:30",
+        "actions": [
+          {"type": "print", "params": {"message": "Bon lundi ! C'est parti pour une nouvelle semaine !"}},
+          {"type": "sound", "params": {"file": "monday_motivation.mp3", "volume": 70}},
+          {"type": "light", "params": {"brightness": 80, "color": "warm_white"}},
+          {"type": "coffee", "params": {"cups": 2, "strength": "strong"}}
+        ]
+      },
+      {
+        "day": "Tuesday",
+        "time": "07:00",
+        "actions": [
+          {"type": "print", "params": {"message": "Mardi dynamique ! On se lève !"}},
+          {"type": "sound", "params": {"file": "energetic_tuesday.mp3", "volume": 65}},
+          {"type": "light", "params": {"brightness": 100, "color": "daylight"}},
+          {"type": "curtains", "params": {"action": "open"}}
+        ]
+      }
+    ],
+    "settings": {
+      "timezone": "Europe/Paris",
+      "24h_format": true
+    }
+}
