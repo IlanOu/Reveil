@@ -1,5 +1,5 @@
 from src.base.Waker import Waker, Alarm
-from src.actions.MusicPlayer import MusicPlayer
+from src.actions.MusicPlayers import MusicPlayer
 import sys, time, signal
 
 # if __name__ == "__main__":
