@@ -7,3 +7,6 @@
 # Environnement virtuel
 env/
 myenv/
+
+# Folder audio downloaded
+assets/audiosDownloaded/
