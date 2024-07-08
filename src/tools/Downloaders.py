@@ -19,13 +19,25 @@ class YoutubeDownloader():
             if os.path.exists(mp3_file):
                 print("Le fichier existe déjà")
             else:
+                print('Téléchargement de la musique...')
                 stream.download(output_path=self.pathAudioFolder)
                 os.rename(downloaded_file, mp3_file)
                 print('Téléchargement de la musique terminé.')  
 
-            print('Téléchargement de la musique...')
         except Exception as e:
             print('Une erreur s\'est produite : ', str(e))
+
+
+class SpotifyDownloader():
+
+    def __init__(self, pathAudioFolder = "/assets/audiosDownloaded/") -> None:
+        self.pathAudioFolder = pathAudioFolder
+
+    def downloadFromUrl(self, url):
+        try:
+           pass
+        except Exception as e:
+            pass
 
 if __name__ == "__main__":
     YoutubeDownloader().downloadFromUrl("https://youtu.be/9bZkp7q19f0")
