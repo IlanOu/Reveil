@@ -27,13 +27,6 @@ class RollerShutterProtocol(ActionPermission):
     def open_at(self, nb_sec):
         print("The open_at method must be implemented in the subclass.")
 
-class MusicPlayerProtocol(ActionPermission):
-    def play(music_url):
-        print(f"Je joue la musique : {music_url}")
-
-    def stop():
-        print("J'ai stoppé la musique !")
-
 
 
 # ---------------------------------------------------------------------------- #
