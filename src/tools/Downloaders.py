@@ -1,8 +1,11 @@
 from pytube import YouTube
 import os
 
+class DownloaderProtocol():
+    def downloadFromUrl(self, url): print("Error : class as not instancied this method")
+    def downloadFromName(self, name): print("Error : subclass as not instancied this method")
 
-class YoutubeDownloader():
+class YoutubeDownloader(DownloaderProtocol):
 
     def __init__(self, pathAudioFolder = "/assets/audiosDownloaded/") -> None:
         self.pathAudioFolder = pathAudioFolder
@@ -28,7 +31,7 @@ class YoutubeDownloader():
             print('Une erreur s\'est produite : ', str(e))
 
 
-class SpotifyDownloader():
+class SpotifyDownloader(DownloaderProtocol):
 
     def __init__(self, pathAudioFolder = "/assets/audiosDownloaded/") -> None:
         self.pathAudioFolder = pathAudioFolder
@@ -41,3 +44,4 @@ class SpotifyDownloader():
 
 if __name__ == "__main__":
     YoutubeDownloader().downloadFromUrl("https://youtu.be/9bZkp7q19f0")
+    SpotifyDownloader().downloadFromName("https://youtu.be/9bZkp7q19f0")
