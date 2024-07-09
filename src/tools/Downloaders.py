@@ -21,11 +21,13 @@ class YoutubeDownloader(DownloaderProtocol):
         
             if os.path.exists(mp3_file):
                 print("Le fichier existe déjà")
+                return mp3_file
             else:
                 print('Téléchargement de la musique...')
                 stream.download(output_path=self.pathAudioFolder)
                 os.rename(downloaded_file, mp3_file)
-                print('Téléchargement de la musique terminé.')  
+                print('Téléchargement de la musique terminé.')
+                return mp3_file
 
         except Exception as e:
             print('Une erreur s\'est produite : ', str(e))
