@@ -4,6 +4,7 @@ import os
 class DownloaderProtocol():
     def downloadFromUrl(self, url): print("Error : class as not instancied this method")
     def downloadFromName(self, name): print("Error : subclass as not instancied this method")
+    def downloadFromUnknowSource(self, data): pass
 
 class YoutubeDownloader(DownloaderProtocol):
 
@@ -31,6 +32,9 @@ class YoutubeDownloader(DownloaderProtocol):
 
         except Exception as e:
             print('Une erreur s\'est produite : ', str(e))
+
+    def downloadFromUnknowSource(self, data):
+        pass # TODO check if url or name
 
 
 class SpotifyDownloader(DownloaderProtocol):
