@@ -55,21 +55,19 @@ class SpotifyDownloader(DownloaderProtocol):
 # ---------------------------------------------------------------------------- #
 class AudioDownloaderManager():
 
-    def __init__(self, savePath) -> None:
+    def __init__(self, savePath = "/assets/audiosDownloaded/") -> None:
         self.savePath = savePath
 
     def changeSavePath(self, newPath):
         self.savePath = newPath
     
-    def download(self, audioUrl, platform, savePath=None):
-        if savePath is None:
-            savePath = self.savePath
+    def download(self, audioUrl, platform):
 
         match(platform):
             case PLATFORM.YOUTUBE:
-                YoutubeDownloader().downloadFromUrl(audioUrl)
+                YoutubeDownloader(self.savePath).downloadFromUrl(audioUrl)
             case PLATFORM.SPOTIFY:
-                SpotifyDownloader().downloadFromName(audioUrl)
+                SpotifyDownloader(self.savePath).downloadFromName(audioUrl)
             case _:
                 print("Platform is not available")
 
