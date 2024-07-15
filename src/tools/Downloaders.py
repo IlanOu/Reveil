@@ -1,4 +1,5 @@
 from pytube import YouTube
+from src.base.Enumerator import *
 import os
 
 class DownloaderProtocol():
@@ -64,6 +65,14 @@ class AudioDownloaderManager():
         if savePath is None:
             savePath = self.savePath
 
+        match(platform):
+            case PLATFORM.YOUTUBE:
+                YoutubeDownloader().downloadFromUrl(audioUrl)
+            case PLATFORM.SPOTIFY:
+                SpotifyDownloader().downloadFromName(audioUrl)
+            case _:
+                print("Platform is not available")
+
 if __name__ == "__main__":
-    YoutubeDownloader().downloadFromUrl("https://youtu.be/9bZkp7q19f0")
-    SpotifyDownloader().downloadFromName("https://youtu.be/9bZkp7q19f0")
+    AudioDownloaderManager("/assets/audiosDownloaded/").download("https://youtu.be/9bZkp7q19f0", PLATFORM.YOUTUBE)
+    
