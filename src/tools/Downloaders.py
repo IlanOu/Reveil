@@ -48,6 +48,22 @@ class SpotifyDownloader(DownloaderProtocol):
         except Exception as e:
             pass
 
+
+# ---------------------------------------------------------------------------- #
+#                                 class Manager                                #
+# ---------------------------------------------------------------------------- #
+class AudioDownloaderManager():
+
+    def __init__(self, savePath) -> None:
+        self.savePath = savePath
+
+    def changeSavePath(self, newPath):
+        self.savePath = newPath
+    
+    def download(self, audioUrl, platform, savePath=None):
+        if savePath is None:
+            savePath = self.savePath
+
 if __name__ == "__main__":
     YoutubeDownloader().downloadFromUrl("https://youtu.be/9bZkp7q19f0")
     SpotifyDownloader().downloadFromName("https://youtu.be/9bZkp7q19f0")
