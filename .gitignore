@@ -10,3 +10,5 @@ myenv/
 
 # Folder audio downloaded
 assets/audiosDownloaded/
+
+*__pycache__*
