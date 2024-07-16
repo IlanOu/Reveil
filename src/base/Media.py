@@ -12,7 +12,8 @@ class MediaManager():
 
     def play(self, music_url):
         musicPath = self.getValidMedia(music_url)
-        self.mediaPlayer.play(musicPath)
+        print(musicPath)
+        # self.mediaPlayer.play(musicPath)
 
 
     def stop(self):
@@ -30,13 +31,15 @@ class MediaManager():
     def getValidMedia(self, data):
         if self.mediaChecker.isFileExist(data):
             # Play sound
-            return data
+            print("path : ", data)
+            return data 
         else:
             # Try to download
             if self.mediaChecker.isUrl(data):
                 platform = self.mediaChecker.getPlatformFromUrl(data)
                 if platform != None:
-                    return self.downloader.download(data, platform)
+                    path = self.downloader.download(data, platform)
+                    print(path)
                 else:
                     print("Error : wrong platform")
             else:

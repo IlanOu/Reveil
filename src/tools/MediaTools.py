@@ -21,11 +21,12 @@ class MediaChecker():
     
     @staticmethod
     def getPlatformFromUrl(url:str):
-        if PLATFORM.YOUTUBE.lower() in url:
+        if str(PLATFORM.YOUTUBE.value).lower() in url:
             return PLATFORM.YOUTUBE
-        elif PLATFORM.SPOTIFY.lower() in url:
+        elif str(PLATFORM.SPOTIFY).lower() in url:
             return PLATFORM.SPOTIFY
         else:
+            print(PLATFORM.YOUTUBE.value, url)
             print("Error : no platform match with the url")
             return None
 

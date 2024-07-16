@@ -14,8 +14,8 @@ class YoutubeDownloader(DownloaderProtocol):
 
     def downloadFromUrl(self, url):
         try:
-            yt = YouTube(url, use_oauth=True, allow_oauth_cache=True)
-            stream = yt.streams.filter(only_audio=True, file_extension='mp4').first()
+            yt = YouTube(url, use_oauth=False, allow_oauth_cache=True)
+            stream = yt.streams.filter(only_audio=True).first()
 
             # print(dir(yt))
             downloaded_file = self.pathAudioFolder + '/' + yt.title + '.mp4'
@@ -32,7 +32,7 @@ class YoutubeDownloader(DownloaderProtocol):
                 return mp3_file
 
         except Exception as e:
-            print('Une erreur s\'est produite : ', str(e))
+            print('Youtube download erreur : ', str(e))
 
     def downloadFromUnknowSource(self, data):
         pass # TODO check if url or name

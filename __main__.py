@@ -31,5 +31,5 @@ def main():
 
 if __name__ == "__main__":
     # main()
-    from src.tools.MediaTools import YoutubePlaylistPicker
-    YoutubePlaylistPicker().getRandomUrl("a")
+    from src.base.Media import MediaManager
+    MediaManager().play("https://www.youtube.com/watch?v=ZTrrc6Ni5eM")
