@@ -1,5 +1,7 @@
 import os
 from src.base.Enumerator import *
+import random
+from pytube import Playlist
 
 class MediaChecker():
 
@@ -55,10 +57,10 @@ class PlaylistPicker():
 # Protocol
 class PlaylistPickerProtocol():
 
-    def getRandomUrl(self, urlPlaylist, platform):
+    def getRandomUrl(self, urlPlaylist):
         pass
 
-    def getAllUrl(self, urlPlaylist, platform):
+    def getAllUrl(self, urlPlaylist):
         pass
 
 # Platform Picker
@@ -67,23 +69,28 @@ class YoutubePlaylistPicker(PlaylistPickerProtocol):
     def __init__(self) -> None:
         pass
 
-    def getRandomUrl(self, urlPlaylist, platform):
-        pass
+    def getRandomUrl(self, urlPlaylist):
+        print("salut")
+        yt_play = Playlist(urlPlaylist)
+        randomTrack = random.randrange(0, len(yt_play))
+        return yt_play[randomTrack]
 
-    def getAllUrl(self, urlPlaylist, platform):
-        pass
+    def getAllUrl(self, urlPlaylist):
+        yt_play = Playlist(urlPlaylist)
+        return yt_play
 
 class SpotifyPlaylistPicker(PlaylistPickerProtocol):
 
     def __init__(self) -> None:
         pass
 
-    def getRandomUrl(self, urlPlaylist, platform):
+    def getRandomUrl(self, urlPlaylist):
         pass
 
-    def getAllUrl(self, urlPlaylist, platform):
+    def getAllUrl(self, urlPlaylist):
         pass
 
 
 if __name__ == "__main__":
-    MediaChecker.getPlatformFromUrl("https://www.youtube.com/watch?v=K8Gc5ys5Ba8")
+    # MediaChecker.getPlatformFromUrl("https://www.youtube.com/watch?v=K8Gc5ys5Ba8")
+    YoutubePlaylistPicker().getRandomUrl("a")
