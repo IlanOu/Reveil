@@ -1,5 +1,4 @@
 from src.base.Waker import Waker, Alarm
-from src.actions.MusicPlayers import MusicPlayer
 import sys, time, signal
 
 # if __name__ == "__main__":
@@ -14,7 +13,6 @@ def main():
     # Add wake-up actions
     alarm.waker.add_action(print, ("Good morning!",))
     alarm.waker.add_action(print, ("It's time to start your day!",))
-    alarm.waker.add_action(MusicPlayer.play, ["https://youtube.com/qdognqpsflsqi"])
     
     alarm.run()
 
@@ -32,4 +30,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # main()
+    from src.tools.MediaTools import YoutubePlaylistPicker
+    YoutubePlaylistPicker().getRandomUrl("a")
