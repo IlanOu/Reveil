@@ -1,9 +1,9 @@
 from enum import Enum
 
-class PLATFORM(enum):
+class PLATFORM(Enum):
     YOUTUBE = "YOUTUBE"
     SPOTIFY = "SPOTIFY"
 
-class MIMETYPE(enum):
+class MIMETYPE(Enum):
     MP3 = "MP3"
     WAV = "WAV"
