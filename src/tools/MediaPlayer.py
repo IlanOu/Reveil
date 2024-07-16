@@ -19,7 +19,7 @@ class AudioPlayerProtocol(ActionPermission):
     def pause(self):
         print("Error the subclass as not instancied this method")
     
-    def gotTo(self, timestamp):
+    def goTo(self, timestamp):
         print("Error the subclass as not instancied this method")
 
 class GenericAudioPlayer(AudioPlayerProtocol):
@@ -40,6 +40,6 @@ class GenericAudioPlayer(AudioPlayerProtocol):
     def pause(self):
         self.playback.pause()
 
-    def gotTo(self, timestamp):
+    def goTo(self, timestamp):
         pass
 

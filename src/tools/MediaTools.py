@@ -70,7 +70,6 @@ class YoutubePlaylistPicker(PlaylistPickerProtocol):
         pass
 
     def getRandomUrl(self, urlPlaylist):
-        print("salut")
         yt_play = Playlist(urlPlaylist)
         randomTrack = random.randrange(0, len(yt_play))
         return yt_play[randomTrack]

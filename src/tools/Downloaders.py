@@ -65,11 +65,12 @@ class AudioDownloaderManager():
 
         match(platform):
             case PLATFORM.YOUTUBE:
-                YoutubeDownloader(self.savePath).downloadFromUrl(audioUrl)
+                return YoutubeDownloader(self.savePath).downloadFromUrl(audioUrl)
             case PLATFORM.SPOTIFY:
-                SpotifyDownloader(self.savePath).downloadFromName(audioUrl)
+                return SpotifyDownloader(self.savePath).downloadFromName(audioUrl)
             case _:
                 print("Platform is not available")
+                return None
 
 if __name__ == "__main__":
     AudioDownloaderManager("/assets/audiosDownloaded/").download("https://youtu.be/9bZkp7q19f0", PLATFORM.YOUTUBE)
