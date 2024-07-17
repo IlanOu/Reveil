@@ -1,4 +1,4 @@
-from pytube import YouTube
+from pytubefix import YouTube
 from src.base.Enumerator import *
 import os
 
@@ -14,9 +14,9 @@ class YoutubeDownloader(DownloaderProtocol):
 
     def downloadFromUrl(self, url):
         try:
-            yt = YouTube(url, use_oauth=False, allow_oauth_cache=True)
-            stream = yt.streams.filter(only_audio=True).first()
 
+            yt = YouTube(url) # , use_oauth=False, allow_oauth_cache=True
+            stream = yt.streams.get_audio_only() #.filter(only_audio=True).first()
             # print(dir(yt))
             downloaded_file = self.pathAudioFolder + '/' + yt.title + '.mp4'
             mp3_file = self.pathAudioFolder + '/' + yt.title + '.mp3'
@@ -26,8 +26,8 @@ class YoutubeDownloader(DownloaderProtocol):
                 return mp3_file
             else:
                 print('Téléchargement de la musique...')
-                stream.download(output_path=self.pathAudioFolder)
-                os.rename(downloaded_file, mp3_file)
+                stream.download(output_path=self.pathAudioFolder, mp3=True)
+                # os.rename(downloaded_file, mp3_file)
                 print('Téléchargement de la musique terminé.')
                 return mp3_file
 

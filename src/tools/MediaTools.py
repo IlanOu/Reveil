@@ -1,7 +1,7 @@
 import os
 from src.base.Enumerator import *
 import random
-from pytube import Playlist
+from pytubefix import Playlist
 
 class MediaChecker():
 
