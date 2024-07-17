@@ -9,7 +9,7 @@ class DownloaderProtocol():
 
 class YoutubeDownloader(DownloaderProtocol):
 
-    def __init__(self, pathAudioFolder = "/assets/audiosDownloaded/") -> None:
+    def __init__(self, pathAudioFolder = "./assets/audiosDownloaded/") -> None:
         self.pathAudioFolder = pathAudioFolder
 
     def downloadFromUrl(self, url):
@@ -40,7 +40,7 @@ class YoutubeDownloader(DownloaderProtocol):
 
 class SpotifyDownloader(DownloaderProtocol):
 
-    def __init__(self, pathAudioFolder = "/assets/audiosDownloaded/") -> None:
+    def __init__(self, pathAudioFolder = "./assets/audiosDownloaded/") -> None:
         self.pathAudioFolder = pathAudioFolder
 
     def downloadFromUrl(self, url):
@@ -55,7 +55,7 @@ class SpotifyDownloader(DownloaderProtocol):
 # ---------------------------------------------------------------------------- #
 class AudioDownloaderManager():
 
-    def __init__(self, savePath = "/assets/audiosDownloaded/") -> None:
+    def __init__(self, savePath = "./assets/audiosDownloaded/") -> None:
         self.savePath = savePath
 
     def changeSavePath(self, newPath):
@@ -73,5 +73,5 @@ class AudioDownloaderManager():
                 return None
 
 if __name__ == "__main__":
-    AudioDownloaderManager("/assets/audiosDownloaded/").download("https://youtu.be/9bZkp7q19f0", PLATFORM.YOUTUBE)
+    AudioDownloaderManager("./assets/audiosDownloaded/").download("https://youtu.be/9bZkp7q19f0", PLATFORM.YOUTUBE)
     
