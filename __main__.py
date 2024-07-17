@@ -32,4 +32,4 @@ def main():
 if __name__ == "__main__":
     # main()
     from src.base.Media import MediaManager
-    MediaManager().play("https://www.youtube.com/watch?v=ZTrrc6Ni5eM")
+    MediaManager().play("https://www.youtube.com/watch?v=pXRviuL6vMY")

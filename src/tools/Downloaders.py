@@ -9,7 +9,7 @@ class DownloaderProtocol():
 
 class YoutubeDownloader(DownloaderProtocol):
 
-    def __init__(self, pathAudioFolder = "./assets/audiosDownloaded/") -> None:
+    def __init__(self, pathAudioFolder = "assets/audiosDownloaded/") -> None:
         self.pathAudioFolder = pathAudioFolder
 
     def downloadFromUrl(self, url):
@@ -18,8 +18,8 @@ class YoutubeDownloader(DownloaderProtocol):
             yt = YouTube(url) # , use_oauth=False, allow_oauth_cache=True
             stream = yt.streams.get_audio_only() #.filter(only_audio=True).first()
             # print(dir(yt))
-            downloaded_file = self.pathAudioFolder + '/' + yt.title + '.mp4'
-            mp3_file = self.pathAudioFolder + '/' + yt.title + '.mp3'
+            downloaded_file = self.pathAudioFolder + yt.title + '.mp4'
+            mp3_file = self.pathAudioFolder + yt.title + '.mp3'
         
             if os.path.exists(mp3_file):
                 print("Le fichier existe déjà")
@@ -40,7 +40,7 @@ class YoutubeDownloader(DownloaderProtocol):
 
 class SpotifyDownloader(DownloaderProtocol):
 
-    def __init__(self, pathAudioFolder = "./assets/audiosDownloaded/") -> None:
+    def __init__(self, pathAudioFolder = "assets/audiosDownloaded/") -> None:
         self.pathAudioFolder = pathAudioFolder
 
     def downloadFromUrl(self, url):
@@ -55,7 +55,7 @@ class SpotifyDownloader(DownloaderProtocol):
 # ---------------------------------------------------------------------------- #
 class AudioDownloaderManager():
 
-    def __init__(self, savePath = "./assets/audiosDownloaded/") -> None:
+    def __init__(self, savePath = "assets/audiosDownloaded/") -> None:
         self.savePath = savePath
 
     def changeSavePath(self, newPath):
@@ -73,5 +73,5 @@ class AudioDownloaderManager():
                 return None
 
 if __name__ == "__main__":
-    AudioDownloaderManager("./assets/audiosDownloaded/").download("https://youtu.be/9bZkp7q19f0", PLATFORM.YOUTUBE)
+    AudioDownloaderManager("assets/audiosDownloaded/").download("https://youtu.be/9bZkp7q19f0", PLATFORM.YOUTUBE)
     

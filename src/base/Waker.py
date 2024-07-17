@@ -19,7 +19,7 @@ from threading import Timer
 import pytz
 
 class Alarm:
-    def __init__(self, config_file='./assets/alarm_config.json'):
+    def __init__(self, config_file='assets/alarm_config.json'):
         self.config_file = config_file
         self.config = self.load_config()
         self.alarm_timers = {}
