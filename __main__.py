@@ -32,4 +32,4 @@ def main():
 if __name__ == "__main__":
     # main()
     from src.base.Media import MediaManager
-    MediaManager().play("https://www.youtube.com/watch?v=pXRviuL6vMY")
+    MediaManager().play("assets/audiosDownloaded/twenty-one-pilots-Stressed-Out-_OFFICIAL-VIDEO_.mp3")
