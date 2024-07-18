@@ -31,6 +31,7 @@ class GenericAudioPlayer(AudioPlayerProtocol):
         self.playback.init()
 
     def play(self, music_data):
+        # Set Volume to 1
         print(self.playback.music.get_volume())
         self.playback.music.set_volume(1)
         # Load song
