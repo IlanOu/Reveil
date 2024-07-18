@@ -1,7 +1,8 @@
 from pytubefix import YouTube
 from src.base.Enumerator import *
-import os
 from moviepy.editor import *
+import os
+import time
 
 class DownloaderProtocol():
     def downloadFromUrl(self, url): print("Error : class as not instancied this method")
@@ -34,6 +35,8 @@ class YoutubeDownloader(DownloaderProtocol):
                     print('Convertion de la musique...')
                     video = VideoFileClip(downloaded_file)
                     video.audio.write_audiofile(mp3_file)
+                    video.close()
+                    os.remove(downloaded_file)
                     print('Convertion de la musique terminé.')
                     return mp3_file
                 except Exception as e:
