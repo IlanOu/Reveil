@@ -62,3 +62,23 @@ class GenericAudioPlayer(AudioPlayerProtocol):
     def goTo(self, timestamp):
         pass
 
+class SonosAudioPlayer(AudioPlayerProtocol):
+
+    def __init__(self):
+        import soco
+        self.device = soco.discovery.any_soco()
+
+    def play(self, music_url):
+        self.device.play()
+
+    def stop(self):
+        self.device.stop()
+
+    def resume(self):
+        print("Error the subclass as not instancied this method")
+
+    def pause(self):
+        print("Error the subclass as not instancied this method")
+    
+    def goTo(self, timestamp):
+        print("Error the subclass as not instancied this method")

@@ -28,6 +28,7 @@ class MediaManager():
         self.mediaPlayer.goTo(timestamp)
 
     def getValidMedia(self, data):
+        # TODO get valid media of the player ( for don't download if it's unnecessary )
         if self.mediaChecker.isFileExist(data):
             # Play sound
             print("path : ", data)
