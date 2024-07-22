@@ -64,9 +64,9 @@ class GenericAudioPlayer(AudioPlayerProtocol):
 
 class SonosAudioPlayer(AudioPlayerProtocol):
 
-    def __init__(self):
-        import soco
-        self.device = soco.discovery.any_soco()
+    def __init__(self, ip:str):
+        from soco import SoCo
+        self.device = SoCo(ip)
 
     def play(self, music_url):
         self.device.play()
