@@ -4,11 +4,11 @@ from src.tools.MediaTools import MediaChecker, PlaylistPicker
 
 class MediaManager():
 
-    def __init__(self) -> None:
-        self.downloader = AudioDownloaderManager()
-        self.mediaPlayer = GenericAudioPlayer()
-        self.mediaChecker = MediaChecker
-        self.playlistPicker = PlaylistPicker()
+    def __init__(self, downloader=AudioDownloaderManager, mediaPlayer=GenericAudioPlayer, mediaChecker=MediaChecker, playlistPicker=PlaylistPicker) -> None:
+        self.downloader = downloader()
+        self.mediaPlayer = mediaPlayer()
+        self.mediaChecker = mediaChecker()
+        self.playlistPicker = playlistPicker()
 
     def play(self, music_url):
         musicPath = self.getValidMedia(music_url)
