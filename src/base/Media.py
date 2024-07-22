@@ -7,7 +7,7 @@ class MediaManager():
     def __init__(self, downloader=AudioDownloaderManager, mediaPlayer=GenericAudioPlayer, mediaChecker=MediaChecker, playlistPicker=PlaylistPicker) -> None:
         self.downloader = downloader()
         self.mediaPlayer = mediaPlayer()
-        self.mediaChecker = mediaChecker()
+        self.mediaChecker = mediaChecker
         self.playlistPicker = playlistPicker()
 
     def play(self, music_url):
