@@ -9,35 +9,78 @@ def add_alarm_verification(data):
         return False
 
 def add_days_verification(data):
-    days = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
-    if data in days:
+    if len(data) > 0:
+        for day in data:
+            if day in ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]:
+                pass
+            else:
+                return False
         return True
     else:
         return False
 
 def add_actions_verification(data):
-    return True
+    if len(data) > 0:
+        for currentdata in data:
+            if "type" in currentdata and "params" in currentdata and "delay" in currentdata:
+                pass
+            else:
+                return False
+        return True
+    else:
+        return False
 # ---------------------------------------------------------------------------- #
 #                                  PUT METHODS                                 #
 # ---------------------------------------------------------------------------- #
 # For replace data
 def update_name_verification(data):
-    return True
-
+    if type(data) == str:
+        return True
+    else:
+        return False
+    
 def update_ringonce_verification(data):
-    return True
+    if type(data) == bool:
+        return True
+    else:
+        return False
 
 def update_isactivated_verification(data):
-    return True
+    if type(data) == bool:
+        return True
+    else:
+        return False
 
 def update_days_verification(data):
-    return True
+    if len(data) > 0:
+        for day in data:
+            if day in ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]:
+                pass
+            else:
+                return False
+        return True
+    else:
+        return False
 
 def update_time_verification(data):
-    return True
+    if len(data) == 5:
+        if data[2] == ":":
+            return True
+        else:
+            return False 
+    else:
+        return False
 
 def update_actions_verification(data):
-    return True
+    if len(data) > 0:
+        for currentdata in data:
+            if "type" in currentdata and "params" in currentdata and "delay" in currentdata:
+                pass
+            else:
+                return False
+        return True
+    else:
+        return False    
 
 # ---------------------------------------------------------------------------- #
 #                                DELETE METHODS                                #

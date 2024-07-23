@@ -30,7 +30,6 @@ def add_alarm():
     data = request.get_json()
     if add_alarm_verification(data):
         data["id"] = uuid.uuid4()
-        # TODO WEBHOOK
         return 200
     else:
         return data, 400
