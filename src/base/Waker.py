@@ -19,17 +19,11 @@ from threading import Timer
 import pytz
 
 class Alarm:
-    def __init__(self, config_file='./assets/alarm_config.json'):
+    def __init__(self, config_file='assets/alarm_config.json'):
         self.config_file = config_file
         self.config = self.load_config()
         self.alarm_timers = {}
-        self.action_handlers = {
-            "print": self.handle_print,
-            "sound": self.handle_sound,
-            "light": self.handle_light,
-            "coffee": self.handle_coffee,
-            "curtains": self.handle_curtains
-        }
+        self.action_handlers = {}
 
     def load_config(self):
         try:
@@ -74,21 +68,6 @@ class Alarm:
             self.action_handlers[action_type](action['params'])
         else:
             print(f"Unknown action type: {action_type}")
-
-    def handle_print(self, params):
-        print(params['message'])
-
-    def handle_sound(self, params):
-        print(f"Playing sound: {params['file']} at volume {params.get('volume', 100)}%")
-
-    def handle_light(self, params):
-        print(f"Setting light: brightness {params['brightness']}%, color {params['color']}")
-
-    def handle_coffee(self, params):
-        print(f"Making coffee: {params['cups']} cups, strength: {params['strength']}")
-
-    def handle_curtains(self, params):
-        print(f"Curtains: {params['action']}")
 
     def days_until(self, day):
         days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
