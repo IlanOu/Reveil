@@ -8,28 +8,33 @@ import sys, time, signal
 
 
 def main():
-    alarm = Alarm()
+    import json 
+    config = ""
+    with open("./assets/store.json", 'r') as f:
+        config = json.load(f)
+
+    alarm = Alarm(config["alarms"][0])
     
     # Add wake-up actions
-    alarm.waker.add_action(print, ("Good morning!",))
-    alarm.waker.add_action(print, ("It's time to start your day!",))
+    alarm.add_action(print, ("Good morning!",))
+    alarm.add_action(print, ("It's time to start your day!",))
     
-    alarm.run()
+    alarm.enable()
 
     # Keep the script running
     try:
-        while alarm.running:
+        while True:
             time.sleep(1)
+            print("toto")
     except Exception as e:
         print(f"Une erreur s'est produite : {e}")
     except KeyboardInterrupt:
-        alarm.stop()  # You'll need to implement this method in the Alarm class
         print("Alarm clock stopped.")
 
 
 
 
 if __name__ == "__main__":
-    # main()
-    from src.base.Media import MediaManager
-    MediaManager().play("https://www.youtube.com/watch?v=Pw-0pbY9JeU")
+    main()
+    # from src.base.Media import MediaManager
+    # MediaManager().play("https://www.youtube.com/watch?v=Pw-0pbY9JeU")
