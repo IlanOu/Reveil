@@ -9,9 +9,9 @@
         "days": ["Monday"],
         "time": "07:30",
         "actions": [
-          {"type": "say", "params": {"message": "Bon lundi ! C'est parti pour une nouvelle semaine !"}, "delay": "00:05"},
-          {"type": "playMusic", "params": {"file": "monday_motivation.mp3", "volume": 70}, "delay": "00:05"},
-          {"type": "say", "params": {"message": "Bon lundi ! C'est parti pour une nouvelle semaine !"}, "delay": "00:05"}
+          {"type": "print", "params": {"message": "Bon lundi ! C'est parti pour une nouvelle semaine !"}, "delay": "00:05"},
+          {"type": "MediaManager", "music_url": "https://www.youtube.com/watch?v=pXRviuL6vMY&ab_channel=FueledByRamen", "delay": "00:05"},
+          {"type": "print", "params": {"message": "Bon lundi ! C'est parti pour une nouvelle semaine !"}, "delay": "00:05"}
         ]
       }
     ],

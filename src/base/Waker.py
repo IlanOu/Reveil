@@ -23,22 +23,21 @@ import pytz
 
 class Alarm:
     def __init__(self, config):
-        self.config = self.init_config(config)
         self.alarm_timers = {}
         self.actions = []
+        self.config = self.init_config(config)
+        self.enable()
 
     def init_config(self, config):
-        # TODO format date
+        # 
+        actions_config = config["actions"]
+        for action in actions_config:
+            self.actions.append(action)
         return config
     
     def add_action(self, action_func, params):
+        # TODO append ation in specific format of store (params, ...)
         self.actions.append((action_func, params))
-
-    def enable(self):
-        pass # start Scheduler 
-
-    def disable(self):
-        pass # start Scheduler 
 
     def trigger_alarm(self):
         print(f"Alarm triggered - id : {self.config['id']}")
@@ -48,14 +47,24 @@ class Alarm:
             self.execute_action(action)
 
     def execute_action(self, action):
+        # TODO pickle class
         action_type = action['type']
-
-        if (issubclass(action.__self__.__class__, ActionPermission)):
+        action_type = eval(action_type)
+        if (issubclass(action_type.__self__.__class__, ActionPermission)):
             # start all action if is ActionPermission 
             # TODO use delay of the action
             action["type"](action["params"])
         else:
             print(f"action does not have permission to execute - action: {action_type}")
+
+    def enable(self):
+        Scheduler().start() # start Scheduler 
+
+    def disable(self):
+        Scheduler().stop() # start Scheduler 
+
+    def scheduleAlarm(self, date):
+        Scheduler().scheduleTask(self.trigger_alarm, date)
 
 
 

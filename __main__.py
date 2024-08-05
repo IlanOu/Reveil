@@ -1,6 +1,6 @@
 from src.base.Waker import Waker, Alarm
 import sys, time, signal
-
+from src.base.Media import *
 # if __name__ == "__main__":
 #     waker = Waker()
 #     waker.start()
@@ -16,16 +16,18 @@ def main():
     alarm = Alarm(config["alarms"][0])
     
     # Add wake-up actions
-    alarm.add_action(print, ("Good morning!",))
-    alarm.add_action(print, ("It's time to start your day!",))
+    # alarm.add_action({"type": "say", "params": {"message": "Bon lundi ! C'est parti pour une nouvelle semaine !"}, "delay": "00:05"})
+    # alarm.add_action({"type": "say", "params": {"message": "force"}, "delay": "00:05"})
     
-    alarm.enable()
+    # alarm.enable()
+    alarm.scheduleAlarm("2024-08-05 14:43:50")
+
 
     # Keep the script running
     try:
         while True:
             time.sleep(1)
-            print("toto")
+            # print("toto")
     except Exception as e:
         print(f"Une erreur s'est produite : {e}")
     except KeyboardInterrupt:
