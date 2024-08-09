@@ -9,7 +9,7 @@
         "days": ["Monday"],
         "time": "07:30",
         "actions": [
-          {"type": "play", "params": {"music_url": "twenty one pilots - Ride (Official Video).mp3"}, "delay": "00:05"},
+          {"type": "play", "params": {"music_url": "https://www.youtube.com/watch?v=pXRviuL6vMY"}, "delay": "00:05"},
           {"type": "print", "params": {"message": "Bon lundi ! C'est parti pour une nouvelle semaine !"}, "delay": "00:05"},
           {"type": "print", "params": {"message": "Bon lundi ! C'est parti pour une nouvelle semaine !"}, "delay": "00:05"}
         ]

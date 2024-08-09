@@ -20,7 +20,7 @@ def main():
     # alarm.add_action({"type": "say", "params": {"message": "force"}, "delay": "00:05"})
     
     # alarm.enable()
-    alarm.scheduleAlarm("2024-08-09 11:05:30")
+    alarm.scheduleAlarm("2024-08-09 17:03:30")
 
 
     # Keep the script running

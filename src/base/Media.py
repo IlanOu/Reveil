@@ -1,11 +1,13 @@
 from src.tools.Downloaders import AudioDownloaderManager
 from src.tools.MediaPlayer import GenericAudioPlayer
 from src.tools.MediaTools import MediaChecker, PlaylistPicker
+from src.tools.Singleton import singleton
+from threading import Thread
 
-
-class MediaManager(): # TODO action protocol and singleton
+class MediaManager(Thread):
 
     def __init__(self) -> None:
+        super().start()
         self.downloader = AudioDownloaderManager()
         self.mediaPlayer = GenericAudioPlayer()
         self.mediaChecker = MediaChecker
