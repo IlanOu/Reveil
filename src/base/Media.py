@@ -2,7 +2,8 @@ from src.tools.Downloaders import AudioDownloaderManager
 from src.tools.MediaPlayer import GenericAudioPlayer
 from src.tools.MediaTools import MediaChecker, PlaylistPicker
 
-class MediaManager():
+
+class MediaManager(): # TODO action protocol and singleton
 
     def __init__(self) -> None:
         self.downloader = AudioDownloaderManager()
@@ -13,7 +14,6 @@ class MediaManager():
     def play(self, music_url):
         musicPath = self.getValidMedia(music_url)
         self.mediaPlayer.play(musicPath)
-
 
     def stop(self):
         self.mediaPlayer.stop()

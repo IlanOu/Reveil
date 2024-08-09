@@ -1,4 +1,4 @@
-from src.base.Waker import Waker, Alarm
+from src.base.Waker import Alarm
 import sys, time, signal
 from src.base.Media import *
 # if __name__ == "__main__":
@@ -20,7 +20,7 @@ def main():
     # alarm.add_action({"type": "say", "params": {"message": "force"}, "delay": "00:05"})
     
     # alarm.enable()
-    alarm.scheduleAlarm("2024-08-05 14:43:50")
+    alarm.scheduleAlarm("2024-08-09 11:05:30")
 
 
     # Keep the script running

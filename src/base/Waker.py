@@ -3,18 +3,38 @@ from datetime import datetime, timedelta
 from threading import Timer
 from src.tools.Schelduler import Scheduler
 from src.actions.ActionProtocol import ActionPermission
+from src.base.Media import MediaManager
 
-
-class Waker:
+class ActionManager:
     def __init__(self):
         self.actions = []
 
-    def add_action(self, action_func, params):
-        self.actions.append((action_func, params))
+    def add_action(self, action):
+        self.actions.append(action)
 
-    def start(self):
-        for action, params in self.actions:
-            action(*params)
+    def execute_action(self):
+
+        # call all Actions
+        for action in self.actions:
+
+            action_type = action['type']
+            # TODO use delay of the action
+            # TODO test if class is herited from action permission
+            match(action_type):
+                case "play":
+                    MediaManager().play(action["params"]["music_url"])
+                case "volet":
+                    pass
+                case "lamp":
+                    pass
+                case "print":
+                    print(action["params"]["message"])
+
+            # if (issubclass(action_type.__self__.__class__, ActionPermission)):
+            #     # start all action if is ActionPermission 
+            #     action["type"](action["params"])
+            # else:
+            #     print(f"action does not have permission to execute - action: {action_type}")
 
 import json
 from datetime import datetime, timedelta
@@ -24,38 +44,24 @@ import pytz
 class Alarm:
     def __init__(self, config):
         self.alarm_timers = {}
-        self.actions = []
+        self.actionManager = ActionManager()
         self.config = self.init_config(config)
         self.enable()
 
     def init_config(self, config):
-        # 
+        # feed action of the config file
         actions_config = config["actions"]
         for action in actions_config:
-            self.actions.append(action)
+            self.actionManager.add_action(action)
         return config
     
-    def add_action(self, action_func, params):
-        # TODO append ation in specific format of store (params, ...)
-        self.actions.append((action_func, params))
+    def add_action(self, action):
+        self.actionManager.add_action(action)
 
     def trigger_alarm(self):
         print(f"Alarm triggered - id : {self.config['id']}")
 
-        # call all Actions
-        for action in self.actions:
-            self.execute_action(action)
-
-    def execute_action(self, action):
-        # TODO pickle class
-        action_type = action['type']
-        action_type = eval(action_type)
-        if (issubclass(action_type.__self__.__class__, ActionPermission)):
-            # start all action if is ActionPermission 
-            # TODO use delay of the action
-            action["type"](action["params"])
-        else:
-            print(f"action does not have permission to execute - action: {action_type}")
+        self.actionManager.execute_action()
 
     def enable(self):
         Scheduler().start() # start Scheduler 
